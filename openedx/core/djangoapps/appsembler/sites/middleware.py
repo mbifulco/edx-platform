@@ -16,7 +16,7 @@ class CustomDomainsRedirectMiddleware(object):
 
         if hostname.endswith(settings.SITE_NAME):
             cache_key = '{prefix}-{site}'.format(prefix=settings.CUSTOM_DOMAINS_REDIRECT_CACHE_KEY_PREFIX, site=hostname)
-            custom_domain = redirects = cache.get(cache_key)
+            custom_domain = cache.get(cache_key)
             if custom_domain is None:
                 alternative_domain = AlternativeDomain.objects.filter(domain=hostname)
                 if alternative_domain:
